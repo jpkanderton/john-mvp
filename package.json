@@ -1,0 +1,35 @@
+{
+  "name": "hrr49-mvp-john",
+  "version": "1.0.0",
+  "description": "hrr-49 mvp project for jandy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpkanderton/john-mvp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpkanderton/john-mvp/issues"
+  },
+  "homepage": "https://github.com/jpkanderton/john-mvp#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "jquery": "^3.5.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0"
+  }
+}

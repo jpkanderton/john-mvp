@@ -4,7 +4,10 @@
   "description": "hrr-49 mvp project for jandy",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/app.js",
+    "devStart": "node server/app.js",
+    "build": "webpack -d --watch"
   },
   "repository": {
     "type": "git",
@@ -26,11 +29,12 @@
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
     "babel-loader": "^8.2.2",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.6",
-    "webpack": "^5.11.0",
+    "webpack": "^4.44.2",
     "webpack-cli": "^4.2.0"
   }
 }

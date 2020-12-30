@@ -6,7 +6,8 @@ const { useState, useEffect } = React;
 const PlayerDetails = () => {
   //
   return (
-    <div className="details">PlayerDetails</div>
+    <div className="details">
+    </div>
   )
 }
 

@@ -3,16 +3,14 @@ import ReactDOM from 'react-dom';
 
 const { useState, useEffect } = React;
 
-const SearchBar = () => {
+const SearchButton = ( { display } ) => {
   //
 
   return (
     <div className="search">
-      <form>
-
-      </form>
+      <div className="search-button" onClick = { display }>Search</div>
     </div>
   )
 }
 
-export default SearchBar;
+export default SearchButton;

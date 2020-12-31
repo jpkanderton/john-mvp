@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 const { useState, useEffect } = React;
 
-const ModalSearch = ({ show, hide }) => {
+const ModalSearch = ({ show, hide, submit }) => {
   const [name, setName] = useState('');
   const [nationality, setNationality] = useState('');
   const [age, setAge] = useState('');
@@ -50,7 +50,7 @@ const ModalSearch = ({ show, hide }) => {
             onChange = {(event) => setLeague(event.target.value) }
           />
         </label>
-        <button type="submit" value="Submit" />
+        <button type="button" value="Submit" onClick = { submit }>Submit</button>
       </form>
     </div>
   )

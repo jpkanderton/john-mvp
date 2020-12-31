@@ -12,6 +12,7 @@ const { useState, useEffect } = React;
 
 const App = () =>{
   const [show, setShow] = useState(false);
+  const [clip, setClip] = useState('');
 
   const handleClickOpen = () => {
     setShow(true);
@@ -22,9 +23,14 @@ const App = () =>{
   }
 
   const handleSubmit = (name, nationality, age, league) => {
+    console.log('handle submit');
+    setShow(false);
     axios.get('https://www.scorebat.com/video-api/v1/')
       .then((response) => {
-        console.log('response:\n', response);
+        console.log('response.data:\n', response.data);
+        let randomClip = response.data[Math.floor(Math.random() * Math.floor(response.data.length))];
+        console.log('randomClip: ', randomClip);
+        setClip(randomClip);
       })
       .catch((err) => {
         console.log('error is ', err);
@@ -37,7 +43,7 @@ const App = () =>{
     <div className="container">
       <Header/>
       <SearchButton display = { handleClickOpen }/>
-      <VideoPlayer/>
+      <VideoPlayer clip = { clip }/>
       <PlayerDetails/>
     </div>
     </>

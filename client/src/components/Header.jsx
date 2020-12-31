@@ -9,8 +9,10 @@ const Header = () => {
   return (
     <div className="header">
       <div id="soccer-logo">< GiSoccerKick /></div>
-      <h3 id="soccer-title-1">Who</h3>
-      <h3 id="soccer-title-2">Scored?!</h3>
+      <div className ="soccer-title-container">
+        <div className="soccer-title">Who</div>
+        <div className="soccer-title">Scored?!</div>
+      </div>
     </div>
   )
 }

@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 const { useState, useEffect } = React;
 
 const SearchButton = ( { display } ) => {
-  //
 
   return (
     <div className="search">

@@ -31,7 +31,7 @@ const ModalSearch = ({ show, hide, submit }) => {
             onChange = {(event) => setLeague(event.target.value) }
           />
         </label>
-        <button type="button" value="Submit" onClick = { submit }>Submit</button>
+        <button type="button" value="Submit" onClick = { () => { submit(team) }}>Submit</button>
       </form>
     </div>
   )

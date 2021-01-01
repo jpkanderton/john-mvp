@@ -4,14 +4,11 @@ import ReactDOM from 'react-dom';
 const { useState, useEffect } = React;
 
 const ModalSearch = ({ show, hide, submit }) => {
-  const [name, setName] = useState('');
-  const [nationality, setNationality] = useState('');
-  const [age, setAge] = useState('');
+  const [team, setTeam] = useState('');
   const [league, setLeague] = useState('');
 
   return (
     <div>
-      {console.log('hi hi hi')}
       {show ? <div onClick = { hide } className="backdrop"></div> : null}
       <form
         style={{
@@ -19,27 +16,11 @@ const ModalSearch = ({ show, hide, submit }) => {
         }}
       >
         <label>
-          Name:
+          Team:
           <input
             type = "text"
-            value = { name }
-            onChange = {(event) => setName(event.target.value) }
-          />
-        </label>
-        <label>
-          Nationality:
-          <input
-            type = "text"
-            value = { nationality }
-            onChange = {(event) => setNationality(event.target.value) }
-          />
-        </label>
-        <label>
-          Age:
-          <input
-            type = "text"
-            value = { age }
-            onChange = {(event) => setAge(event.target.value) }
+            value = { team }
+            onChange = {(event) => setTeam(event.target.value) }
           />
         </label>
         <label>

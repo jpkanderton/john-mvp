@@ -8,7 +8,7 @@ import VideoPlayer from './VideoPlayer.jsx';
 import Header from './Header.jsx';
 import SearchButton from './SearchButton.jsx';
 
-import { getRandomClip, findTeam } from './eventHandling.js';
+import { getRandomClip, findTeam, createLeagues } from './eventHandling.js';
 
 
 const { useState, useEffect } = React;
@@ -17,6 +17,7 @@ const App = () =>{
   const [show, setShow] = useState(false);
   const [clip, setClip] = useState('');
   const [games, setGames] = useState('');
+  const [leagues, setLeagues] = useState('');
 
   const handleClickOpen = () => {
     setShow(true);
@@ -41,6 +42,7 @@ const App = () =>{
       .then((response) => {
         setGames(response.data);
         setClip(getRandomClip(response));
+        setLeagues(createLeagues(response.data));
       })
       .catch((err) => {
         console.log('error is ', err);
@@ -51,7 +53,7 @@ const App = () =>{
     <>
     <ModalSearch show = { show } hide = { handleClickClose } submit = { handleSubmit }/>
     <div className="container">
-      {/* {console.log('setGames: ', games)} */}
+      {console.log('leagues: ', leagues)}
       <Header/>
       <SearchButton display = { handleClickOpen }/>
       <VideoPlayer clip = { clip }/>

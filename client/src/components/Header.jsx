@@ -7,11 +7,11 @@ const { useState, useEffect } = React;
 const Header = () => {
   //
   return (
-    <div className="header">
+    <div className="header main-font">
       {/* <div id="soccer-logo">< GiSoccerKick /></div> */}
       <div id="soccer-logo">JA</div>
       <div className ="soccer-title-container">
-        <div className="soccer-title">Who</div>
+        <div className="soccer-title">Show Me Goals!</div>
         <div className="soccer-title">Scored?!</div>
       </div>
     </div>

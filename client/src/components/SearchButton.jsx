@@ -7,7 +7,7 @@ const SearchButton = ( { display } ) => {
 
   return (
     <div className="search">
-      <div className="search-button" onClick = { display }>Search</div>
+      <div className="search-button alternate-font" onClick = { display }>Search</div>
     </div>
   )
 }

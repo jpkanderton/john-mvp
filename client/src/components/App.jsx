@@ -8,7 +8,7 @@ import VideoPlayer from './VideoPlayer.jsx';
 import Header from './Header.jsx';
 import SearchButton from './SearchButton.jsx';
 
-import { getRandomClip, findTeam, createLeagues } from './eventHandling.js';
+import { getRandomClip, findTeam, createLeagues, findLeague } from './eventHandling.js';
 
 
 const { useState, useEffect } = React;
@@ -18,6 +18,7 @@ const App = () =>{
   const [clip, setClip] = useState('');
   const [games, setGames] = useState('');
   const [leagues, setLeagues] = useState('');
+  const [validSub, setValidSub] = useState(true);
 
   const handleClickOpen = () => {
     setShow(true);
@@ -25,14 +26,31 @@ const App = () =>{
 
   const handleClickClose = (event) => {
     setShow(false);
+    setValidSub(true);
   }
 
   const handleSubmit = (team, league) => {
     console.log('handle submit');
-    setShow(false);
-    let result = findTeam(team, games);
+    console.log('league: ', league);
+    console.log('team: ', team);
+
+
+    let result;
+    if (league !== 'empty') {
+      result = findLeague(league, leagues, games);
+    } else {
+      result = findTeam(team, games);
+    }
     console.log('result: ', result);
-    setClip(result);
+    if (result === '') {
+      setValidSub(false);
+    } else {
+      setShow(false);
+      setClip(result);
+    }
+    // console.log('result: ', result);
+    // setShow(false);
+    // setClip(result);
   }
 
   useEffect(() => {
@@ -51,9 +69,8 @@ const App = () =>{
 
   return (
     <>
-    <ModalSearch show = { show } hide = { handleClickClose } submit = { handleSubmit }/>
+    <ModalSearch show = { show } hide = { handleClickClose } submit = { handleSubmit } leaguesObj = { leagues } validSub = { validSub }/>
     <div className="container">
-      {console.log('leagues: ', leagues)}
       <Header/>
       <SearchButton display = { handleClickOpen }/>
       <VideoPlayer clip = { clip }/>

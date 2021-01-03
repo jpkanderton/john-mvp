@@ -19,6 +19,8 @@ const App = () =>{
   const [games, setGames] = useState('');
   const [leagues, setLeagues] = useState('');
   const [validSub, setValidSub] = useState(true);
+  const [team, setTeam] = useState('');
+  const [league, setLeague] = useState('empty');
 
   const handleClickOpen = () => {
     setShow(true);
@@ -27,6 +29,17 @@ const App = () =>{
   const handleClickClose = (event) => {
     setShow(false);
     setValidSub(true);
+  }
+
+  const handleSearch = (value, type) => {
+    console.log('event handle: ');
+    if (type === 'league') {
+      console.log('1')
+      setLeague(value);
+    } else {
+      console.log('2')
+      setTeam(value)
+    }
   }
 
   const handleSubmit = (team, league) => {
@@ -48,9 +61,8 @@ const App = () =>{
       setShow(false);
       setClip(result);
     }
-    // console.log('result: ', result);
-    // setShow(false);
-    // setClip(result);
+    setTeam('');
+    setLeague('empty');
   }
 
   useEffect(() => {
@@ -69,7 +81,7 @@ const App = () =>{
 
   return (
     <>
-    <ModalSearch show = { show } hide = { handleClickClose } submit = { handleSubmit } leaguesObj = { leagues } validSub = { validSub }/>
+    <ModalSearch show = { show } hide = { handleClickClose } submit = { handleSubmit } handleSearch = { handleSearch }leaguesObj = { leagues } validSub = { validSub } team = { team } league = { league }/>
     <div className="container">
       <Header/>
       <SearchButton display = { handleClickOpen }/>

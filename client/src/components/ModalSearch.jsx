@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom';
 
 const { useState, useEffect } = React;
 
-const ModalSearch = ({ show, hide, submit, leaguesObj, validSub }) => {
-  const [team, setTeam] = useState('');
-  const [league, setLeague] = useState('empty');
+const ModalSearch = ({ show, hide, submit, leaguesObj, validSub, team, league, handleSearch }) => {
 
   let leaguesArr = Object.keys(leaguesObj);
   let leagues = leaguesArr.map((currentLeague) =>
@@ -27,12 +25,12 @@ const ModalSearch = ({ show, hide, submit, leaguesObj, validSub }) => {
           <input
             type = "text"
             value = { team }
-            onChange = {(event) => setTeam(event.target.value) }
+            onChange = {(event) => handleSearch(event.target.value, 'team') }
           />
         </label>
         <label>
           League:
-          <select onChange = {(event) => setLeague(event.target.value) } onBlur = {(event) => setLeague(event.target.value) }>
+          <select onChange = {(event) => handleSearch(event.target.value, 'league') } onBlur = {(event) => handleSearch(event.target.value, 'league') } defaultValue={'empty'}>
             <option value="empty"></option>
             {leagues}
           </select>

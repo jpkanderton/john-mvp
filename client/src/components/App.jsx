@@ -68,7 +68,7 @@ const App = () =>{
   useEffect(() => {
     console.log('handle load');
     setShow(false);
-    axios.get('https://www.scorebat.com/video-api/v1/')
+    axios.get('/highlight')
       .then((response) => {
         setGames(response.data);
         setClip(getRandomClip(response));

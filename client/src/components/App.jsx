@@ -9,7 +9,7 @@ import Header from './Header.jsx';
 import SearchButton from './SearchButton.jsx';
 import TeamsModal from './TeamsModal.jsx';
 
-import { getRandomClip, findTeam, createLeagues, findLeague, isLeagueAval } from './eventHandling.js';
+import { getRandomClip, findTeam, createLeagues, findLeague, isLeagueAval, getLeagueCode } from './eventHandling.js';
 
 const { useState, useEffect } = React;
 
@@ -43,12 +43,9 @@ const App = () =>{
   }
 
   const handleSearch = (value, type) => {
-    console.log('event handle: ');
     if (type === 'league') {
-      console.log('1')
       setLeague(value);
     } else {
-      console.log('2')
       setTeam(value)
     }
   }
@@ -60,7 +57,6 @@ const App = () =>{
     } else {
       result = findTeam(team, games);
     }
-    console.log('result: ', result);
     if (result === '') {
       setValidSub(false);
     } else {
@@ -73,6 +69,8 @@ const App = () =>{
   }
 
   const handleDataReq = () => {
+
+
     axios.get()
       .then((results) =>{
         //
@@ -90,6 +88,7 @@ const App = () =>{
       .then((response) => {
         setGames(response.data);
         var randomClip = getRandomClip(response);
+        console.log('code: ', getLeagueCode(randomClip));
         setClip(randomClip);
         setLeagueAccess(isLeagueAval(randomClip));
         setLeagues(createLeagues(response.data));
@@ -101,8 +100,6 @@ const App = () =>{
 
   return (
     <>
-    {console.log('clipclip: ', clip)}
-    {console.log('isLeagueAval: ', isLeagueAval)}
     <ModalSearch show = { show } hide = { handleClickClose } submit = { handleSubmit } handleSearch = { handleSearch }leaguesObj = { leagues } validSub = { validSub } team = { team } league = { league }/>
 
     <TeamsModal show = { tellMeMore } hide = { tellMeHide } display = { tellMeShow } leagueAccess = { leagueAccess }/>

@@ -5,8 +5,6 @@ const { useState, useEffect } = React;
 
 const TeamsModal = ({show, display, hide, leagueAccess }) => {
 
-  console.log('league access: ', leagueAccess);
-
   return (
     <div>
       {show ? <div onClick = { hide } className="backdrop"></div> : null}

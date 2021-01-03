@@ -12,7 +12,6 @@ const ModalSearch = ({ show, hide, submit, leaguesObj, validSub, team, league, h
 
   return (
     <div>
-      {console.log('team and league: ', team ,' and ', league)}
       {show ? <div onClick = { hide } className="backdrop"></div> : null}
       {validSub ?
       <form

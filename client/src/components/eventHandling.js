@@ -2,7 +2,6 @@ import { getSrc } from './getSrc';
 
 // FIND A TEAM
 const findTeam = (teamName, clipsArr) => {
-  console.log('clips arr: ', clipsArr);
   teamName = teamName.toLowerCase();
   for (var i = 0; i < clipsArr.length; i++) {
     let side1 = clipsArr[i]['side1']['name'].toLowerCase();
@@ -73,4 +72,25 @@ const isLeagueAval = (clip) => {
   return false;
 }
 
-export { findTeam, getRandomClip, createLeagues, findLeague, isLeagueAval };
+const getLeagueCode = (clip) => {
+  const accessibleLeagues = {
+    'ITALY: Serie A': 2019,
+    'ENGLAND: Premier League': 2021,
+    'ENGLAND: Championship': 2016,
+    'SPAIN: La Liga': 2014,
+    'GERMANY: BUNDESLIGA': 2002,
+    'FRANCE: Ligue 1': 2015,
+    'PORTUGAL: Primeira Liga': 2017,
+    'EREDEVISIE: ': 2003
+  };
+
+  for (var key in accessibleLeagues) {
+    if (key === clip.competition.name) {
+      return accessibleLeagues[key];
+    }
+  }
+
+  return null;
+}
+
+export { findTeam, getRandomClip, createLeagues, findLeague, isLeagueAval, getLeagueCode };

@@ -10,6 +10,17 @@ import SearchButton from './SearchButton.jsx';
 
 import { getRandomClip, findTeam, createLeagues, findLeague } from './eventHandling.js';
 
+const wazzup = {
+  'ITALY: Serie A': 2019,
+  'ENGLAND: Premier League': 2021,
+  'ENGLAND: Championship': 2016,
+  'SPAIN: La Liga': 2014,
+  'GERMANY: BUNDESLIGA': 2002,
+  'FRANCE: Ligue 1': 2015,
+  'PORTUGAL: Primeira Liga': 2017,
+  'EREDEVISIE: ': 2003
+};
+
 
 const { useState, useEffect } = React;
 
@@ -21,6 +32,7 @@ const App = () =>{
   const [validSub, setValidSub] = useState(true);
   const [team, setTeam] = useState('');
   const [league, setLeague] = useState('empty');
+  const [leagueStandings, setLeagueStandings] = useState('');
 
   const handleClickOpen = () => {
     setShow(true);
@@ -43,9 +55,10 @@ const App = () =>{
   }
 
   const handleSubmit = (team, league) => {
-    console.log('handle submit');
-    console.log('league: ', league);
-    console.log('team: ', team);
+    // console.log('handle submit');
+    // console.log('league: ', league);
+    // console.log('team: ', team);
+    console.log(wazzup);
 
 
     let result;
@@ -63,6 +76,17 @@ const App = () =>{
     }
     setTeam('');
     setLeague('empty');
+  }
+
+  const handleDataReq = () => {
+    axios.get()
+      .then((results) =>{
+        //
+      })
+      .catch((error) => {
+        //
+        console.log('retrieving result error');
+      })
   }
 
   useEffect(() => {

@@ -16,11 +16,11 @@ const ModalSearch = ({ show, hide, submit, leaguesObj, validSub }) => {
     <div>
       {console.log('team and league: ', team ,' and ', league)}
       {show ? <div onClick = { hide } className="backdrop"></div> : null}
-      {show && validSub ?
+      {validSub ?
       <form
         style={{
-          transform: show ? 'translatey(0vh)' : 'translatey(-100vh)',
-        }}
+          transform: show ? 'translateY(0vh)' : 'translateY(-100vh)'
+        }} className="small-font"
       >
         <label>
           Team:
@@ -40,8 +40,16 @@ const ModalSearch = ({ show, hide, submit, leaguesObj, validSub }) => {
         <button type="button" value="Submit" onClick = { () => { submit(team, league) }}>Submit</button>
       </form>
       :  null}
-      {show && !validSub ?
-        <div className="invalid-sub">Invalid Submission</div>
+      {show ?
+        <div className="invalid-sub alternate-font"
+          style={{
+            height: !validSub ? '150px' : '390px',
+            'z-index': !validSub ? '2' : '-1',
+            color: '#F64C72'
+        }}
+        >
+          <div>Invalid Submission</div>
+        </div>
       : null}
     </div>
   )

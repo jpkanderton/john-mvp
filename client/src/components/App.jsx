@@ -35,6 +35,7 @@ const App = () =>{
   const [league, setLeague] = useState('empty');
   const [leagueStandings, setLeagueStandings] = useState('');
   const [tellMeMore, setTellMeMore] = useState(false);
+  const [leagueAccess, setLeagueAccess] = useState(true);
 
   const tellMeShow = () => {
     setTellMeMore(true);
@@ -118,7 +119,7 @@ const App = () =>{
 
     <ModalSearch show = { show } hide = { handleClickClose } submit = { handleSubmit } handleSearch = { handleSearch }leaguesObj = { leagues } validSub = { validSub } team = { team } league = { league }/>
 
-    <TeamsModal show = { tellMeMore } hide = { tellMeHide } display = { tellMeShow }/>
+    <TeamsModal show = { tellMeMore } hide = { tellMeHide } display = { tellMeShow } leagueAccess = { leagueAccess }/>
 
     <div className="container">
       <Header/>

@@ -11,6 +11,8 @@ import TeamsModal from './TeamsModal.jsx';
 
 import { getRandomClip, findTeam, createLeagues, findLeague, isLeagueAval, getLeagueCode } from './eventHandling.js';
 
+import apiToken from './apiToken.js';
+
 const { useState, useEffect } = React;
 
 const App = () =>{
@@ -62,22 +64,36 @@ const App = () =>{
     } else {
       setShow(false);
       setClip(result);
+      handleDataReq(result);
       setLeagueAccess(isLeagueAval(result))
     }
     setTeam('');
     setLeague('empty');
   }
 
-  const handleDataReq = () => {
+  const handleDataReq = (clipInput) => {
+    var leagueCode;
+    if (clipInput) {
+      leagueCode = getLeagueCode(clipInput);
+    } else {
+      getLeagueCode(clip);
+    }
 
-
-    axios.get()
+    if (!leagueCode) {
+      return;
+    }
+    console.log('api token: ', apiToken);
+    axios.get(`https://api.football-data.org/v2/competitions/${leagueCode}/standings?standingType=TOTAL`, {
+      headers: {
+        'X-Auth-Token': apiToken
+      }
+    })
       .then((results) =>{
-        //
+        console.log(results.data.standings[0]['table'][0]['team']['name']);
       })
       .catch((error) => {
-        //
         console.log('retrieving result error');
+        console.log('error');
       })
   }
 
@@ -88,10 +104,10 @@ const App = () =>{
       .then((response) => {
         setGames(response.data);
         var randomClip = getRandomClip(response);
-        console.log('code: ', getLeagueCode(randomClip));
         setClip(randomClip);
         setLeagueAccess(isLeagueAval(randomClip));
         setLeagues(createLeagues(response.data));
+        handleDataReq(randomClip);
       })
       .catch((err) => {
         console.log('error is ', err);
@@ -108,7 +124,7 @@ const App = () =>{
       <Header/>
       <SearchButton display = { handleClickOpen }/>
       <VideoPlayer clip = { clip }/>
-      <PlayerDetails display = { tellMeShow }/>
+      <PlayerDetails display = { tellMeShow } dataOnClick = { handleDataReq }/>
     </div>
     </>
   )

@@ -73,6 +73,7 @@ const isLeagueAval = (clip) => {
 }
 
 const getLeagueCode = (clip) => {
+  console.log('getLeagueCode clip: ', clip);
   const accessibleLeagues = {
     'ITALY: Serie A': 2019,
     'ENGLAND: Premier League': 2021,

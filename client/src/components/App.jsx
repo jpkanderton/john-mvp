@@ -9,19 +9,7 @@ import Header from './Header.jsx';
 import SearchButton from './SearchButton.jsx';
 import TeamsModal from './TeamsModal.jsx';
 
-import { getRandomClip, findTeam, createLeagues, findLeague } from './eventHandling.js';
-
-const wazzup = {
-  'ITALY: Serie A': 2019,
-  'ENGLAND: Premier League': 2021,
-  'ENGLAND: Championship': 2016,
-  'SPAIN: La Liga': 2014,
-  'GERMANY: BUNDESLIGA': 2002,
-  'FRANCE: Ligue 1': 2015,
-  'PORTUGAL: Primeira Liga': 2017,
-  'EREDEVISIE: ': 2003
-};
-
+import { getRandomClip, findTeam, createLeagues, findLeague, isLeagueAval } from './eventHandling.js';
 
 const { useState, useEffect } = React;
 
@@ -66,12 +54,6 @@ const App = () =>{
   }
 
   const handleSubmit = (team, league) => {
-    // console.log('handle submit');
-    // console.log('league: ', league);
-    // console.log('team: ', team);
-    console.log(wazzup);
-
-
     let result;
     if (league !== 'empty') {
       result = findLeague(league, leagues, games);
@@ -84,6 +66,7 @@ const App = () =>{
     } else {
       setShow(false);
       setClip(result);
+      setLeagueAccess(isLeagueAval(result))
     }
     setTeam('');
     setLeague('empty');
@@ -106,7 +89,9 @@ const App = () =>{
     axios.get('/highlight')
       .then((response) => {
         setGames(response.data);
-        setClip(getRandomClip(response));
+        var randomClip = getRandomClip(response);
+        setClip(randomClip);
+        setLeagueAccess(isLeagueAval(randomClip));
         setLeagues(createLeagues(response.data));
       })
       .catch((err) => {
@@ -116,7 +101,8 @@ const App = () =>{
 
   return (
     <>
-
+    {console.log('clipclip: ', clip)}
+    {console.log('isLeagueAval: ', isLeagueAval)}
     <ModalSearch show = { show } hide = { handleClickClose } submit = { handleSubmit } handleSearch = { handleSearch }leaguesObj = { leagues } validSub = { validSub } team = { team } league = { league }/>
 
     <TeamsModal show = { tellMeMore } hide = { tellMeHide } display = { tellMeShow } leagueAccess = { leagueAccess }/>

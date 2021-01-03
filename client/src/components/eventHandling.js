@@ -49,4 +49,28 @@ const getRandomClip = (clipsArr) => {
   return clipsArr.data[Math.floor(Math.random() * Math.floor(clipsArr.data.length))]
 }
 
-export { findTeam, getRandomClip, createLeagues, findLeague };
+// CHECK VALID LEAGUE
+
+const isLeagueAval = (clip) => {
+  //
+  const accessibleLeagues = {
+    'ITALY: Serie A': 2019,
+    'ENGLAND: Premier League': 2021,
+    'ENGLAND: Championship': 2016,
+    'SPAIN: La Liga': 2014,
+    'GERMANY: BUNDESLIGA': 2002,
+    'FRANCE: Ligue 1': 2015,
+    'PORTUGAL: Primeira Liga': 2017,
+    'EREDEVISIE: ': 2003
+  };
+
+  var keys = Object.keys(accessibleLeagues);
+  for (var i = 0; i < keys.length; i++) {
+    if (keys[i] === clip.competition.name) {
+      return true;
+    }
+  }
+  return false;
+}
+
+export { findTeam, getRandomClip, createLeagues, findLeague, isLeagueAval };

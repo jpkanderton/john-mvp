@@ -7,6 +7,7 @@ import PlayerDetails from './PlayerDetails.jsx';
 import VideoPlayer from './VideoPlayer.jsx';
 import Header from './Header.jsx';
 import SearchButton from './SearchButton.jsx';
+import TeamsModal from './TeamsModal.jsx';
 
 import { getRandomClip, findTeam, createLeagues, findLeague } from './eventHandling.js';
 
@@ -33,6 +34,15 @@ const App = () =>{
   const [team, setTeam] = useState('');
   const [league, setLeague] = useState('empty');
   const [leagueStandings, setLeagueStandings] = useState('');
+  const [tellMeMore, setTellMeMore] = useState(false);
+
+  const tellMeShow = () => {
+    setTellMeMore(true);
+  }
+
+  const tellMeHide = () => {
+    setTellMeMore(false);
+  }
 
   const handleClickOpen = () => {
     setShow(true);
@@ -105,12 +115,16 @@ const App = () =>{
 
   return (
     <>
+
     <ModalSearch show = { show } hide = { handleClickClose } submit = { handleSubmit } handleSearch = { handleSearch }leaguesObj = { leagues } validSub = { validSub } team = { team } league = { league }/>
+
+    <TeamsModal show = { tellMeMore } hide = { tellMeHide } display = { tellMeShow }/>
+
     <div className="container">
       <Header/>
       <SearchButton display = { handleClickOpen }/>
       <VideoPlayer clip = { clip }/>
-      <PlayerDetails/>
+      <PlayerDetails display = { tellMeShow }/>
     </div>
     </>
   )

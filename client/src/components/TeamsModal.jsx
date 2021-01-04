@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 //location icon
-// import { MdPlace } from 'react-icons/md';
+import { MdPlace } from 'react-icons/md';
 // soccerball icon
-// import { GiSoccerBall } from 'react-icons/gi';
+import { GiSoccerBall } from 'react-icons/gi';
 // playershooting icon
-// import { GiSoccerKick } from 'react-icons/gi';
+import { GiSoccerKick } from 'react-icons/gi';
 
 
 import { getTeamData } from './eventHandling.js';
@@ -55,25 +55,25 @@ const TeamsModal = ({show, display, hide, leagueAccess, leagueStandings, clip, s
         {showTeamModal && (sideClicked ==='side1' || sideClicked ==='side2') ?
         <div className='teams-modal-container'>
           <div className='modal-details-container'>
-            <div className='modal-header alternate-font'>{teams[sideClicked].team.name}</div>
+            <div className='modal-header'>{teams[sideClicked].team.name}</div>
             <div className="modal-item">
               <div className="modal-item-header">Ranking</div>
               <div className="modal-item-body">
-                <div className="modal-logo"></div>
+                <div className="modal-logo">< MdPlace /></div>
                 <div className="modal-logo">{teams[sideClicked].position}</div>
               </div>
             </div>
             <div className="modal-item">
               <div className="modal-item-header">Points</div>
                 <div className="modal-item-body">
-                  <div className="modal-logo"></div>
+                  <div className="modal-logo">< GiSoccerBall /></div>
                   <div className="modal-logo">{teams[sideClicked].points}</div>
                 </div>
               </div>
             <div className="modal-item">
               <div className="modal-item-header">Goal Difference</div>
                 <div className="modal-item-body">
-                  <div className="modal-logo"></div>
+                  <div className="modal-logo">< GiSoccerKick /></div>
                   <div className="modal-logo">{teams[sideClicked].goalDifference}</div>
                 </div>
               </div>

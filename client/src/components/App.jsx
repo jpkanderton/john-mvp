@@ -27,7 +27,12 @@ const App = () =>{
   const [tellMeMore, setTellMeMore] = useState(false);
   const [leagueAccess, setLeagueAccess] = useState(true);
   const [teamData, setTeamData] = useState('');
+  const [showTeamModal, setShowTeamModal] = useState(false);
 
+
+  const displayTeamModal = () => {
+    setShowTeamModal(true);
+  }
 
   const tellMeShow = () => {
     setTellMeMore(true);
@@ -35,6 +40,7 @@ const App = () =>{
 
   const tellMeHide = () => {
     setTellMeMore(false);
+    setShowTeamModal(false);
   }
 
   const handleClickOpen = () => {
@@ -127,7 +133,7 @@ const App = () =>{
     <>
     <ModalSearch show = { show } hide = { handleClickClose } submit = { handleSubmit } handleSearch = { handleSearch }leaguesObj = { leagues } validSub = { validSub } team = { team } league = { league }/>
 
-    <TeamsModal show = { tellMeMore } hide = { tellMeHide } display = { tellMeShow } leagueAccess = { leagueAccess } leagueStandings = { leagueStandings } clip = { clip }/>
+    <TeamsModal show = { tellMeMore } hide = { tellMeHide } display = { tellMeShow } leagueAccess = { leagueAccess } leagueStandings = { leagueStandings } clip = { clip } showTeamModal = { showTeamModal } displayTeamModal = { displayTeamModal }/>
 
     <div className="container">
       <Header/>

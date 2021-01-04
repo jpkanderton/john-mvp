@@ -5,7 +5,7 @@ import { getTeamData } from './eventHandling.js';
 
 const { useState, useEffect } = React;
 
-const TeamsModal = ({show, display, hide, leagueAccess, leagueStandings, clip }) => {
+const TeamsModal = ({show, display, hide, leagueAccess, leagueStandings, clip, showTeamModal, displayTeamModal }) => {
 
   var teams;
   if (leagueStandings.standings && clip.side1) {
@@ -27,11 +27,11 @@ const TeamsModal = ({show, display, hide, leagueAccess, leagueStandings, clip })
         >
           <div className='team-logo-container'>
             {teams.side1 ?
-            <img src = {teams.side1.team.crestUrl}></img> : <img src = 'https://assets.stickpng.com/images/5a4613e5d099a2ad03f9c995.png' ></img> }
+            <img src = {teams.side1.team.crestUrl} onClick = { displayTeamModal } ></img> : <img src = 'https://assets.stickpng.com/images/5a4613e5d099a2ad03f9c995.png' ></img> }
           </div>
           <div className='team-logo-container'>
             {teams.side2 ?
-            <img src = {teams.side2.team.crestUrl}></img> : <img src = 'https://assets.stickpng.com/images/5a4613e5d099a2ad03f9c995.png' ></img> }
+            <img src = {teams.side2.team.crestUrl} onClick = { displayTeamModal } ></img> : <img src = 'https://assets.stickpng.com/images/5a4613e5d099a2ad03f9c995.png' ></img> }
           </div>
         </div>
         :
@@ -45,8 +45,12 @@ const TeamsModal = ({show, display, hide, leagueAccess, leagueStandings, clip })
           </div>
         </div>
         }
+        {showTeamModal ?
+        <div className='teams-modal-container'>
+          Hello
+        </div>
+        : null}
     </div>
-
   )
 }
 

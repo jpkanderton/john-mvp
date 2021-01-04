@@ -125,7 +125,6 @@ const App = () =>{
 
   return (
     <>
-    {console.log('league standings: ', leagueStandings)}
     <ModalSearch show = { show } hide = { handleClickClose } submit = { handleSubmit } handleSearch = { handleSearch }leaguesObj = { leagues } validSub = { validSub } team = { team } league = { league }/>
 
     <TeamsModal show = { tellMeMore } hide = { tellMeHide } display = { tellMeShow } leagueAccess = { leagueAccess } leagueStandings = { leagueStandings } clip = { clip }/>

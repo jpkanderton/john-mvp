@@ -72,6 +72,8 @@ const isLeagueAval = (clip) => {
   return false;
 }
 
+// GET LEAGUE CODE
+
 const getLeagueCode = (clip) => {
   console.log('getLeagueCode clip: ', clip);
   const accessibleLeagues = {
@@ -94,4 +96,23 @@ const getLeagueCode = (clip) => {
   return null;
 }
 
-export { findTeam, getRandomClip, createLeagues, findLeague, isLeagueAval, getLeagueCode };
+// GET TEAMS FROM STANDINGS
+
+const getTeamData = (side1, side2, standings) => {
+
+  var result = {};
+
+  for (var i = 0; i < standings.length; i++){
+    var currentTeam = standings[i].team.name;
+    if ( currentTeam.indexOf(side1) !== -1 ) {
+      result.side1 = standings[i];
+    }
+    if ( currentTeam.indexOf(side2) !== -1 ) {
+      result.side2 = standings[i];
+    }
+  }
+  return result;
+}
+
+
+export { findTeam, getRandomClip, createLeagues, findLeague, isLeagueAval, getLeagueCode, getTeamData };

@@ -26,6 +26,8 @@ const App = () =>{
   const [leagueStandings, setLeagueStandings] = useState('');
   const [tellMeMore, setTellMeMore] = useState(false);
   const [leagueAccess, setLeagueAccess] = useState(true);
+  const [teamData, setTeamData] = useState('');
+
 
   const tellMeShow = () => {
     setTellMeMore(true);
@@ -89,7 +91,14 @@ const App = () =>{
       }
     })
       .then((results) =>{
-        console.log(results.data.standings[0]['table'][0]['team']['name']);
+        var country = results.data.competition.area.name;
+        var leagueName = results.data.competition.name;
+        var standings = results.data.standings[0]['table'];
+        setLeagueStandings({
+          country: country,
+          leagueName: leagueName,
+          standings: standings
+        });
       })
       .catch((error) => {
         console.log('retrieving result error');
@@ -116,9 +125,10 @@ const App = () =>{
 
   return (
     <>
+    {console.log('league standings: ', leagueStandings)}
     <ModalSearch show = { show } hide = { handleClickClose } submit = { handleSubmit } handleSearch = { handleSearch }leaguesObj = { leagues } validSub = { validSub } team = { team } league = { league }/>
 
-    <TeamsModal show = { tellMeMore } hide = { tellMeHide } display = { tellMeShow } leagueAccess = { leagueAccess }/>
+    <TeamsModal show = { tellMeMore } hide = { tellMeHide } display = { tellMeShow } leagueAccess = { leagueAccess } leagueStandings = { leagueStandings } clip = { clip }/>
 
     <div className="container">
       <Header/>

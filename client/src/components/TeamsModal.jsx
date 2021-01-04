@@ -1,5 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+//location icon
+// import { MdPlace } from 'react-icons/md';
+// soccerball icon
+// import { GiSoccerBall } from 'react-icons/gi';
+// playershooting icon
+// import { GiSoccerKick } from 'react-icons/gi';
+
 
 import { getTeamData } from './eventHandling.js';
 
@@ -47,7 +54,12 @@ const TeamsModal = ({show, display, hide, leagueAccess, leagueStandings, clip, s
         }
         {showTeamModal && (sideClicked ==='side1' || sideClicked ==='side2') ?
         <div className='teams-modal-container'>
-          <div className='modal-details-container'>{teams[sideClicked].team.name}</div>
+          <div className='modal-details-container'>
+            <div className='modal-header'>{teams[sideClicked].team.name}</div>
+            <div className="modal-item"></div>
+            <div className="modal-item"></div>
+            <div className="modal-item"></div>
+          </div>
         </div>
         : null}
     </div>

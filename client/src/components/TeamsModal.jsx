@@ -48,17 +48,35 @@ const TeamsModal = ({show, display, hide, leagueAccess, leagueStandings, clip, s
           }}
         >
           <div className='no-league-access-container'>
-            <div className='no-league-access-text'>No League Access</div>
+            <div className='no-league-access-text'>No Data Available</div>
           </div>
         </div>
         }
         {showTeamModal && (sideClicked ==='side1' || sideClicked ==='side2') ?
         <div className='teams-modal-container'>
           <div className='modal-details-container'>
-            <div className='modal-header'>{teams[sideClicked].team.name}</div>
-            <div className="modal-item"></div>
-            <div className="modal-item"></div>
-            <div className="modal-item"></div>
+            <div className='modal-header alternate-font'>{teams[sideClicked].team.name}</div>
+            <div className="modal-item">
+              <div className="modal-item-header">Ranking</div>
+              <div className="modal-item-body">
+                <div className="modal-logo"></div>
+                <div className="modal-logo">{teams[sideClicked].position}</div>
+              </div>
+            </div>
+            <div className="modal-item">
+              <div className="modal-item-header">Points</div>
+                <div className="modal-item-body">
+                  <div className="modal-logo"></div>
+                  <div className="modal-logo">{teams[sideClicked].points}</div>
+                </div>
+              </div>
+            <div className="modal-item">
+              <div className="modal-item-header">Goal Difference</div>
+                <div className="modal-item-body">
+                  <div className="modal-logo"></div>
+                  <div className="modal-logo">{teams[sideClicked].goalDifference}</div>
+                </div>
+              </div>
           </div>
         </div>
         : null}

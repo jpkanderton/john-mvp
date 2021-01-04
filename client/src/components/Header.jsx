@@ -11,8 +11,8 @@ const Header = () => {
       {/* <div id="soccer-logo">< GiSoccerKick /></div> */}
       <div id="soccer-logo">JA</div>
       <div className ="soccer-title-container">
-        <div className="soccer-title">Show Me Goals!</div>
-        <div className="soccer-title">Scored?!</div>
+        <div className="soccer-title">Show Me All</div>
+        <div className="soccer-title">The HighLights?!</div>
       </div>
     </div>
   )
